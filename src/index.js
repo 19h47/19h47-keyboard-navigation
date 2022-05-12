@@ -1,72 +1,61 @@
 import { ARROW_UP, ARROW_RIGHT, ARROW_DOWN, ARROW_LEFT, HOME, END } from '@19h47/keycode';
 
+const state = { index: 0 };
+
+const next = (event, elements) => {
+	// console.log('➡️ next');
+
+	event.preventDefault();
+
+	state.index = state.index + 1 > elements.length - 1 ? 0 : state.index + 1;
+	elements[state.index].focus();
+};
+
+const previous = (event, elements) => {
+	// console.log('⬅️ previous');
+
+	event.preventDefault();
+
+	state.index = 0 > state.index - 1 ? elements.length - 1 : state.index - 1;
+	elements[state.index].focus();
+};
+
+const first = (event, elements) => {
+	// console.log('⏮ first');
+
+	event.preventDefault();
+
+	state.index = 0;
+	elements[state.index].focus();
+};
+
+const last = (event, elements) => {
+	// console.log('⏭ last');
+	event.preventDefault();
+
+	state.index = elements.length - 1;
+	elements[state.index].focus();
+};
+
+const codes = {
+	[ARROW_UP]: previous,
+	[ARROW_RIGHT]: next,
+	[ARROW_DOWN]: next,
+	[ARROW_LEFT]: previous,
+	[HOME]: first,
+	[END]: last,
+	default: () => false,
+};
+
 /**
  * Keyboard navigation
  *
  * @param {Object} event
  * @param {Array} elements
- * @param {Number} currentIndex
  *
  * @returns {Number} index
  */
-const keyboardNavigation = (event, elements = [], currentIndex = 0) => {
-	const key = event.keyCode || event.which;
-	let index = currentIndex;
+const keyboardNavigation = (event, elements = []) =>
+	(codes[event.keyCode || event.which] || codes.default)(event, elements);
 
-	const next = () => {
-		// console.log('➡️ next');
-
-		event.preventDefault();
-
-		if (-1 < currentIndex) {
-			index = Math.min(elements.length - 1, currentIndex + 1);
-
-			elements[index].focus();
-		}
-	};
-
-	const previous = () => {
-		// console.log('⬅️ previous');
-
-		event.preventDefault();
-		if (-1 < currentIndex) {
-			index = Math.max(0, currentIndex - 1);
-
-			elements[index].focus();
-		}
-	};
-
-	const first = () => {
-		// console.log('⏮ first');
-
-		index = 0;
-
-		event.preventDefault();
-		elements[index].focus();
-	};
-
-	const last = () => {
-		// console.log('⏭ last');
-
-		index = elements.length - 1;
-
-		event.preventDefault();
-		elements[index].focus();
-	};
-
-	const codes = {
-		[ARROW_UP]: previous,
-		[ARROW_RIGHT]: next,
-		[ARROW_DOWN]: next,
-		[ARROW_LEFT]: previous,
-		[HOME]: first,
-		[END]: last,
-		default: () => false,
-	};
-
-	(codes[key] || codes.default)();
-
-	return index;
-};
-
-export default keyboardNavigation;
+export { state, keyboardNavigation };
