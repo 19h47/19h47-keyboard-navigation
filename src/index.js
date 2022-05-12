@@ -1,41 +1,46 @@
 import { ARROW_UP, ARROW_RIGHT, ARROW_DOWN, ARROW_LEFT, HOME, END } from '@19h47/keycode';
 
-const state = { index: 0 };
-
-const next = (event, elements) => {
+const next = (event, elements, index) => {
 	// console.log('➡️ next');
 
 	event.preventDefault();
 
-	state.index = state.index + 1 > elements.length - 1 ? 0 : state.index + 1;
-	elements[state.index].focus();
+	const current = index + 1 > elements.length - 1 ? 0 : index + 1;
+	elements[current].focus();
+
+	return current;
 };
 
-const previous = (event, elements) => {
+const previous = (event, elements, index) => {
 	// console.log('⬅️ previous');
 
 	event.preventDefault();
 
-	state.index = 0 > state.index - 1 ? elements.length - 1 : state.index - 1;
-	elements[state.index].focus();
+	const current = 0 > index - 1 ? elements.length - 1 : index - 1;
+	elements[current].focus();
+
+	return current;
 };
 
 const first = (event, elements) => {
 	// console.log('⏮ first');
 
 	event.preventDefault();
+	elements[0].focus();
 
-	state.index = 0;
-	elements[state.index].focus();
+	return 0;
 };
 
-const last = (event, elements) => {
+const last = (event, elements,) => {
 	// console.log('⏭ last');
+
 	event.preventDefault();
 
-	state.index = elements.length - 1;
-	elements[state.index].focus();
+	elements[elements.length - 1].focus();
+
+	return elements.length - 1
 };
+
 
 const codes = {
 	[ARROW_UP]: previous,
@@ -52,10 +57,10 @@ const codes = {
  *
  * @param {Object} event
  * @param {Array} elements
+ * @param {Number} current
  *
  * @returns {Number} index
  */
-const keyboardNavigation = (event, elements = []) =>
-	(codes[event.keyCode || event.which] || codes.default)(event, elements);
+const keyboardNavigation = (event, elements = [], index = 0) => (codes[event.keyCode || event.which] || codes.default)(event, elements, index);
 
-export { state, keyboardNavigation };
+export default keyboardNavigation;
