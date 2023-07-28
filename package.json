@@ -1,6 +1,6 @@
 {
 	"name": "@19h47/keyboard-navigation",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"description": "Control focus by keyboard input",
 	"repository": "https://github.com/19h47/19h47-keyboard-navigation",
 	"license": "MIT",
