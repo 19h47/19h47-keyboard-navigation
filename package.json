@@ -1,6 +1,6 @@
 {
 	"name": "@19h47/keyboard-navigation",
-	"version": "0.2.0",
+	"version": "0.3.0",
 	"description": "Control focus by keyboard input",
 	"repository": "https://github.com/19h47/19h47-keyboard-navigation",
 	"license": "MIT",
@@ -13,32 +13,29 @@
 		"start": "webpack-dev-server --mode=development --hot --config webpack/webpack.config.js"
 	},
 	"dependencies": {
-		"@19h47/keycode": "^3.0.3"
+		"@19h47/keycode": "^3.1.0"
 	},
 	"devDependencies": {
 		"@19h47/prettier-config": "^1.0.0",
 		"@babel/core": "^7.12.9",
 		"@babel/eslint-parser": "^7.14.7",
 		"@babel/eslint-plugin": "^7.12.1",
-		"@babel/plugin-proposal-class-properties": "^7.12.1",
 		"@babel/plugin-transform-runtime": "^7.12.1",
 		"@babel/preset-env": "^7.12.7",
 		"@babel/runtime": "^7.12.5",
-		"babel-loader": "^8.2.2",
+		"babel-loader": "^9.1.3",
 		"clean-webpack-plugin": "^4.0.0-alpha.0",
 		"core-js": "^3.22.4",
 		"eslint": "^8.15.0",
 		"eslint-config-airbnb-base": "^15.0.0",
-		"eslint-config-prettier": "^8.1.0",
+		"eslint-config-prettier": "^9.0.0",
 		"eslint-import-resolver-webpack": "^0.13.0",
 		"eslint-plugin-import": "^2.25.2",
-		"eslint-plugin-node": "^11.1.0",
-		"eslint-plugin-promise": "^6.0.0",
-		"eslint-webpack-plugin": "^3.0.1",
-		"prettier": "^2.2.1",
-		"webpack": "5.72.0",
-		"webpack-cli": "4.9.2",
-		"webpack-dev-server": "4.9.0",
+		"eslint-webpack-plugin": "^4.0.1",
+		"prettier": "^3.0.3",
+		"webpack": "5.88.2",
+		"webpack-cli": "5.1.4",
+		"webpack-dev-server": "4.15.1",
 		"webpack-merge": "^5.4.0",
 		"webpack-notifier": "^1.11.0"
 	}
