@@ -1,5 +1,14 @@
 import { ARROW_UP, ARROW_RIGHT, ARROW_DOWN, ARROW_LEFT, HOME, END } from '@19h47/keycode';
 
+/**
+ * Next
+ *
+ * @param {*} event
+ * @param {*} elements
+ * @param {*} index
+ *
+ * @returns {Number} index
+ */
 const next = (event, elements, index) => {
 	// console.log('➡️ next');
 
@@ -11,6 +20,15 @@ const next = (event, elements, index) => {
 	return current;
 };
 
+/**
+ * Previous
+ *
+ * @param {*} event
+ * @param {*} elements
+ * @param {*} index
+ *
+ * @returns {Number} index
+ */
 const previous = (event, elements, index) => {
 	// console.log('⬅️ previous');
 
@@ -22,6 +40,14 @@ const previous = (event, elements, index) => {
 	return current;
 };
 
+/**
+ * First
+ *
+ * @param {*} event
+ * @param {*} elements
+ *
+ * @returns {Number} index
+ */
 const first = (event, elements) => {
 	// console.log('⏮ first');
 
@@ -31,6 +57,14 @@ const first = (event, elements) => {
 	return 0;
 };
 
+/**
+ * Last
+ *
+ * @param {*} event
+ * @param {*} elements
+ *
+ * @returns {Number} index
+ */
 const last = (event, elements,) => {
 	// console.log('⏭ last');
 
