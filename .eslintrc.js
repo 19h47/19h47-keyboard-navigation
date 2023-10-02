@@ -1,12 +1,23 @@
 const plugins = ['@babel'];
 
+const settings = {
+	'import/resolver': {
+		webpack: {
+			config: 'webpack/webpack.config.common.js',
+		},
+	},
+};
+
+const env = {
+	node: true,
+	browser: true,
+	jest: true,
+};
+
 module.exports = {
 	root: true,
-	env: {
-		node: true,
-		browser: true,
-	},
-	extends: ['airbnb-base', 'prettier'],
+	env,
+	extends: [ 'airbnb-base', 'prettier'],
 	rules: {
 		'arrow-parens': ['error', 'as-needed'],
 		'no-console': 'off',
@@ -23,12 +34,6 @@ module.exports = {
 		sourceType: 'module',
 		allowImportExportEverywhere: true,
 	},
-	settings: {
-		'import/resolver': {
-			webpack: {
-				config: 'webpack/webpack.config.common.js',
-			},
-		},
-	},
+	settings,
 	plugins,
 };
